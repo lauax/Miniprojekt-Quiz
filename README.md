@@ -1,1 +1,0 @@
-# Miniprojekt-Quiz
