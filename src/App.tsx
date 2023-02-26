@@ -14,6 +14,8 @@ type AnswerObject = {
   correctAnswer:string;
 }
 
+//HUR VISAR VI ALLA FRÅGOR PÅ SLUTET: DEN SISTA SIDAN
+
 const TOTAL_QUESTIONS = 10;
 
 const App = () => {
@@ -27,7 +29,7 @@ const App = () => {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
 
- 
+ console.log(fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY))
 
 
   const startTrivia = async () => { 
@@ -90,7 +92,7 @@ const App = () => {
      
      />
        )}
-     <button className='next' onClick={nextQuestion}>Next question</button>
+     <button className='next' onClick={nextQuestion}>Show next question</button>
     </div>
   );
 }
