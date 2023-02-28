@@ -2,7 +2,7 @@
 import './App.css';
 
 import React, { useState } from 'react';
-import { fetchQuizQuestions, QuestionsState } from './API';
+import { fetchQuizQuestions, Question } from './API';
 //Components
 import QuestionCard from './components/QuestionCard';
 //Types
@@ -23,24 +23,23 @@ const App = () => {
  
   
  //All out types for the states
-  const [loading, setloading] = useState (false);
-  const [questions, setQuestions] = useState<QuestionsState[]> ([]);
+  const [loading, setloading] = useState(true);
+  const [questions, setQuestions] = useState<Question[]> ([]);
   const [number, setNumber] = useState (0);
-  const [userAnswer, setUserAnswer] = useState <AnswerObject[]>([]);
+  const [userAnswer, setUserAnswer] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
-
- console.log(fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY))
-
-
+  
   const startTrivia = async () => { 
-    setloading (true);
-    setGameOver (false);
+    setloading(true);
+    setGameOver(false);
 
     const newQuestions = await fetchQuizQuestions (
       TOTAL_QUESTIONS,
       Difficulty.EASY
     );
+
+    console.log(newQuestions);
 
 //Use some sort of error handling if we get an error
 
@@ -49,9 +48,6 @@ const App = () => {
     setUserAnswer([]);
     setNumber (0);
     setloading(false);
-
-  
-
   };
   
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) =>{
@@ -61,14 +57,11 @@ const App = () => {
   const nextQuestion = () =>{
 
   }
-
-
-
   
 
   return (
     <div className="App">
-     <h1>Quiz-app</h1>
+     <h1>Quiz-app</h1> 
      
       {gameOver || userAnswer.length === TOTAL_QUESTIONS ? (
 
@@ -78,13 +71,13 @@ const App = () => {
      
      {!gameOver ? <p className='score'> Score: </p> :null}
      
-     {loading && <p>Loading Questions....</p> }
+     {loading || !questions.length && <p>Loading Questions....</p> }
 
     {!loading&&!gameOver &&  (  
     
    
       <QuestionCard 
-     questionNr={number +1}
+     questionNr={number + 1}
      totalQuestions = {TOTAL_QUESTIONS}
      question = {questions[number].question}
      answers = {questions[number].answers}
