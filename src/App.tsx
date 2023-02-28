@@ -1,4 +1,5 @@
 
+import './App.css';
 
 import React, { useState } from 'react';
 import { fetchQuizQuestions, QuestionsState } from './API';
@@ -21,7 +22,7 @@ const TOTAL_QUESTIONS = 10;
 const App = () => {
  
   
-
+ //All out types for the states
   const [loading, setloading] = useState (false);
   const [questions, setQuestions] = useState<QuestionsState[]> ([]);
   const [number, setNumber] = useState (0);
@@ -81,7 +82,7 @@ const App = () => {
 
     {!loading&&!gameOver &&  (  
     
-    
+   
       <QuestionCard 
      questionNr={number +1}
      totalQuestions = {TOTAL_QUESTIONS}
@@ -91,6 +92,7 @@ const App = () => {
      callback = {checkAnswer}
      
      />
+     
        )}
      <button className='next' onClick={nextQuestion}>Show next question</button>
     </div>
