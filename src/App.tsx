@@ -7,6 +7,8 @@ import { fetchQuizQuestions, QuestionsState } from './API';
 import QuestionCard from './components/QuestionCard';
 //Types
 import { Difficulty } from './API';
+import { shuffleArray } from './Random';
+import { shuffleQuestion } from './Random';
 
 type AnswerObject = {
   question:string;
@@ -59,7 +61,7 @@ const App = () => {
   }
 
   const nextQuestion = () =>{
-
+    shuffleQuestion(questions)
   }
 
 
