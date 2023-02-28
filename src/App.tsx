@@ -8,7 +8,7 @@ import QuestionCard from './components/QuestionCard';
 //Types
 import { Difficulty } from './API';
 
-type AnswerObject = {
+export type AnswerObject = {
   question:string;
   answer:string;
   correct:boolean;
@@ -51,12 +51,39 @@ const App = () => {
   };
   
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) =>{
+    if (!gameOver){
+      //Svar från användaren
+      const answer = e.currentTarget.value
+      //cchecka om svaret är umber
+      const correct = questions[number].correct_answer === answer;
+      //Lägg till poän om svaret är rätt
+      if (correct) setScore(prev => prev +1);
+      //Spara svar i array för svar av användaren
+      const AnswerObject = {
+        question: questions[number].question,
+        answer,
+        correct,
+        correctAnswer:questions[number].correct_answer,
+
+      };
+      setUserAnswer((prev) => [...prev,AnswerObject]);
+        }
 
   }
 
   const nextQuestion = () =>{
+    //Svara på frågan såvida det inte är den sista
+    const nextQuestion = number +1;
 
-  }
+    if (nextQuestion === TOTAL_QUESTIONS){
+      setGameOver(true);
+    }else{
+      setNumber(nextQuestion)
+    }
+
+    };
+
+  
   
 
   return (
@@ -87,9 +114,17 @@ const App = () => {
      />
      
        )}
-     <button className='next' onClick={nextQuestion}>Show next question</button>
-    </div>
+       {!gameOver && !loading && userAnswer.length === number +1 && number !== TOTAL_QUESTIONS-1?(
+
+         <button className='next' onClick={nextQuestion}>Show next question</button>
+       ) :null}
+       </div>
   );
-}
+       };
+    
+
+
+       
+         
 
 export default App
