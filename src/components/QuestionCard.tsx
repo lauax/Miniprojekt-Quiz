@@ -9,7 +9,7 @@ type Props= {
     totalQuestions:number;
 
 }
-
+//FC är inbyggt för FunctionalComponent 
 const QuestionCard:React.FC<Props> = ({question, answers, callback, userAnswer,questionNr,totalQuestions}) => ( 
 
 <div>
