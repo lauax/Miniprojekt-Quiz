@@ -7,6 +7,9 @@ import { fetchQuizQuestions, Question } from './API';
 import QuestionCard from './components/QuestionCard';
 //Types
 import { Difficulty } from './API';
+//Style
+import { OurStyle } from './App.style';
+
 
 export type AnswerObject = {
   question:string;
@@ -87,8 +90,10 @@ const App = () => {
   
 
   return (
+    <> 
+    <OurStyle /> 
     <div className="App">
-     <h1>Quiz-app</h1> 
+     <h1></h1> 
      
       {gameOver || userAnswer.length === TOTAL_QUESTIONS ? (
 
@@ -96,7 +101,7 @@ const App = () => {
      <button className='start' onClick={startTrivia}> Start </button>
       ) : null}
      
-     {!gameOver ? <p className='score'> Score: </p> :null}
+     {!gameOver ? <p className='score'> Score: {score}</p> :null}
      
      {loading || !questions.length && <p>Loading Questions....</p> }
 
@@ -119,6 +124,7 @@ const App = () => {
          <button className='next' onClick={nextQuestion}>Show next question</button>
        ) :null}
        </div>
+       </>
   );
        };
     
