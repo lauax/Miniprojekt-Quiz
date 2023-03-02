@@ -8,6 +8,7 @@ import QuestionCard from './components/QuestionCard';
 //Types
 import { Difficulty } from './API';
 //Style
+import { Link } from 'react-router-dom';
 import { OurStyle } from './App.style';
 
 
@@ -92,7 +93,21 @@ const App = () => {
   return (
     <> 
     <OurStyle /> 
-    <div className="App">
+    <div>
+
+
+    <div className='sidebar'> 
+
+        
+        <Link to="StartPage">Startpage</Link>
+        <Link to="QuizCard">Quizgame</Link>
+        <Link to="Score">About...</Link>
+      
+    </div>
+
+
+
+
      <h1></h1> 
      
       {gameOver || userAnswer.length === TOTAL_QUESTIONS ? (
