@@ -99,9 +99,8 @@ const App = () => {
     <div className='sidebar'> 
 
         
-        <Link to="StartPage">Startpage</Link>
-        <Link to="QuizCard">Quizgame</Link>
-        <Link to="Score">About...</Link>
+        <Link to="Restargame">Restart</Link>
+        <Link to="GameRules">About...</Link>
       
     </div>
 
