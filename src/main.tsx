@@ -8,13 +8,13 @@ import {
 } from "react-router-dom";
 import App from "./App";
 import Home from "./Home";
+import Quiz from "./Quiz";
 
 const routerJSX = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
       <Route path="quiz" element={<Quiz />} />
-      <Route path="about" element={<About />} />
     </Route>
   )
 );
