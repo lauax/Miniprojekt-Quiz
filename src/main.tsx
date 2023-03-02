@@ -4,9 +4,8 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  RouterProvider
+  RouterProvider,
 } from "react-router-dom";
-import About from "./about";
 import App from "./App";
 import Home from "./Home";
 import Quiz from "./Quiz";
@@ -15,8 +14,7 @@ const routerJSX = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
-      <Route path="quiz" element={<Quiz/>} />
-      <Route path="about" element={<About/>} />
+      <Route path="quiz" element={<Quiz />} />
     </Route>
   )
 );
