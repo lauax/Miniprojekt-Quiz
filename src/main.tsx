@@ -1,3 +1,4 @@
+
 import React from "react";
 import { createRoot } from "react-dom/client";
 import {
@@ -5,16 +6,7 @@ import {
 } from "react-router-dom";
 import App from "./App";
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <App />
-//   },
-//   {
-//     path: "about",
-//     element: <div>About</div>,
-//   },
-// ]);
+
 
 const routerJSX = createBrowserRouter(
   createRoutesFromElements(
@@ -34,3 +26,4 @@ createRoot(document.getElementById("root") as HTMLElement).render(
     <RouterProvider router={routerJSX} />
   </React.StrictMode>
 );
+
