@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { OurStyle } from "./Home.style";
 
 const QuizContainer = styled.div`
   background-color: purple;
@@ -15,6 +16,8 @@ const QuizContainer = styled.div`
 
 function Quiz() {
   return (
+    <>
+    <OurStyle />
     <QuizContainer>
       <h1>Quiz Game</h1>
       <p>
@@ -22,6 +25,8 @@ function Quiz() {
         a variety of topics and see how many you can get right.
       </p>
     </QuizContainer>
+
+    </>
   );
 }
 
