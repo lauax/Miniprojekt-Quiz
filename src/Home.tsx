@@ -36,6 +36,7 @@ const Home = () => {
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
       Difficulty.EASY
+      
     );
 
     console.log(newQuestions);
@@ -83,12 +84,19 @@ const Home = () => {
     <>
       <OurStyle />
       <div>
-        {gameOver || userAnswer.length === TOTAL_QUESTIONS ? (
-          <button className="start" onClick={startTrivia}>
-            {" "}
-            Start{" "}
-          </button>
-        ) : null}
+      {gameOver || userAnswer.length === TOTAL_QUESTIONS ? (
+  <div>
+    <button className={`start ${userAnswer.length !== TOTAL_QUESTIONS ? "" : "hide"}`} onClick={startTrivia} >
+    Start
+    </button>
+
+    {userAnswer.length === TOTAL_QUESTIONS && (
+      <button className="reset" onClick={startTrivia}>
+        Reset
+      </button>
+    )}
+  </div>
+) : null}
 
         {!gameOver ? <p className="score"> Score: {score}</p> : null}
 

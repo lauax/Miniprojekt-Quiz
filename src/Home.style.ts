@@ -4,8 +4,12 @@ import Image from './images/hello.jpeg';
 export const OurStyle = createGlobalStyle`
   html {
     height: 100%;
+    
   }
 
+  .hide {
+    display: none !important; 
+  }
 *{
     box-sizing: border-box;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -14,19 +18,16 @@ export const OurStyle = createGlobalStyle`
   
   body {
     background-image: url(${Image});
-    
-    height: 100%;
     margin: 0;
     padding: 0;
-    display: flex;
+    display:flex;
     justify-content: center;
     align-items: center;
-   
-  
-    
     font-family: sans-serif;
-    background-size: cover;
-    background-position: center;
+    background-size: 90% 100%;
+    background-repeat: no-repeat;
+    background-position: center right;
+    margin-top:17.5%;
   }
   h1{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -60,7 +61,7 @@ button.start {
     top: 50%; /* This centers the button vertically */
     left: 50%;
     transform: translate(-50%, -50%);
-    display: block;
+    display:block;
     text-align: center;
     text-shadow: 0 0 10px #fff;
     box-shadow: 0 0 10px #fff;
@@ -68,6 +69,25 @@ button.start {
     transition: all 0.2s ease-in-out;
   }
   
+  button.reset {
+    background-color: rgb(165, 37, 150);
+    color: #fff;
+    border: 2px solid #f9f9f9;
+    border-radius: 40px;
+    font-size: 1.5em;
+    padding: 15px 25px;
+    margin: auto; /* This centers the button horizontally */
+    position: absolute;
+    top: 90%; /* This centers the button vertically */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display:block;
+    text-align: center;
+    text-shadow: 0 0 10px #fff;
+    box-shadow: 0 0 10px #fff;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
   
   button.start:hover {
     background-color: #f9f9f9;
@@ -108,7 +128,7 @@ button.start {
   background-color: rgb(165, 37, 150);
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 20%;
   background-color: #f1f1f1;
   position: fixed;
   top: 0;
