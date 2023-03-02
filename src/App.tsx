@@ -147,7 +147,7 @@ const App = () => {
     
 
 
-export default App;
+
        
 const Aside = styled.aside`
   background-color: rgb(165, 37, 150);
