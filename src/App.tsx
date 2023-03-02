@@ -4,12 +4,22 @@ import styled from "styled-components";
 function App() {
   return (
     <div>
+    
       <Aside>
         <Link to="/">Startpage</Link>
         <Link to="quiz">Quizgame</Link>
         <Link to="about">About...</Link>
       </Aside>
       <Outlet />
+
+
+
+    <div className='sidebar'> 
+
+        
+     
+      
+
     </div>
   );
 }
