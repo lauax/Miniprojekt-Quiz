@@ -21,7 +21,7 @@ export type AnswerObject = {
 const TOTAL_QUESTIONS = 10;
 
 const Home = () => {
-  //All out types for the states
+  // Våra states
   const [loading, setloading] = useState(true);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [number, setNumber] = useState(0);
