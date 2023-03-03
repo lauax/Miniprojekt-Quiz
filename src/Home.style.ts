@@ -27,7 +27,7 @@ export const OurStyle = createGlobalStyle`
     background-size: 90% 100%;
     background-repeat: no-repeat;
     background-position: center right;
-    margin-top:17.5%;
+    
   }
   h1{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -113,7 +113,8 @@ button.start {
     box-shadow: 0 0 10px #fff;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    bottom: 7rem;
+    bottom: 3rem;
+    
   }
   
   button.next:hover {
