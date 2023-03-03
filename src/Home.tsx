@@ -92,7 +92,7 @@ const Home = () => {
 
     {userAnswer.length === TOTAL_QUESTIONS && (
       <button className="reset" onClick={startTrivia}>
-        Reset
+        Restart
       </button>
     )}
   </div>
