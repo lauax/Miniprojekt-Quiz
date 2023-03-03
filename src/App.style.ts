@@ -5,7 +5,7 @@ export const OurStyle = createGlobalStyle`
   background-color: rgb(165, 37, 150);
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 20%;
   background-color: #f1f1f1;
   position: fixed;
   top: 0;

@@ -21,7 +21,7 @@ const Aside = styled.aside`
   background-color: rgb(165, 37, 150);
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 15.5%;
   background-color: #f1f1f1;
   position: fixed;
   top: 0;

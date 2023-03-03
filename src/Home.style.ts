@@ -10,6 +10,7 @@ export const OurStyle = createGlobalStyle`
   .hide {
     display: none !important; 
   }
+ 
 *{
     box-sizing: border-box;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -20,7 +21,7 @@ export const OurStyle = createGlobalStyle`
     background-image: url(${Image});
     margin: 0;
     padding: 0;
-    display:flex;
+    display:flex !important;
     justify-content: center;
     align-items: center;
     font-family: sans-serif;

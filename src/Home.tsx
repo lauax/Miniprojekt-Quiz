@@ -83,6 +83,7 @@ const Home = () => {
   return (
     <>
       <OurStyle />
+      
       <div>
       {gameOver || userAnswer.length === TOTAL_QUESTIONS ? (
   <div>
