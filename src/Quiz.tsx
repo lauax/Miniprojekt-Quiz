@@ -12,6 +12,7 @@ const QuizContainer = styled.div`
   height: 300px;
   width: 600px;
   margin: auto;
+  margin-top 8rem;
 `;
 
 function Quiz() {
