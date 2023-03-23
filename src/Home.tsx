@@ -7,6 +7,7 @@ import QuestionCard from "./components/QuestionCard";
 //Types
 import { Difficulty } from "./API";
 //Style
+import Ammount from "./ammount";
 import { OurStyle } from "./Home.style";
 
 export type AnswerObject = {
@@ -83,7 +84,7 @@ const Home = () => {
   return (
     <>
       <OurStyle />
-      
+      <Ammount></Ammount>
       <div>
       {gameOver || userAnswer.length === TOTAL_QUESTIONS ? (
   <div>

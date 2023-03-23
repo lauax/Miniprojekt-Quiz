@@ -9,6 +9,7 @@ function App() {
         <Link to="/">Startpage</Link>
         <Link to="/"onClick={startTrivia}>Start over</Link>
         <Link to="about">About...</Link>
+        <Link to="socials">Sociala medier</Link>
       </Aside>
       <Outlet />
     </div>
