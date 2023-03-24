@@ -7,7 +7,7 @@ interface Props {
 }
 function Dropdown(props:Props) {
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   
   const options= [3, 5, 7, 10];
 
@@ -34,9 +34,9 @@ function Dropdown(props:Props) {
   return (
     <div className="dropdown">
       <div className="dropdown-toggle" onClick={() => setIsOpen(!isOpen)}>
-        {props.value || 'Select an option'}
-        <i className={isOpen ? 'fa fa-caret-up' : 'fa fa-caret-down'}></i>
-      </div>
+  {props.value ? `${props.value} Frågor` : 'Välj antal frågor'}
+  <i className={isOpen ? 'fa fa-caret-up' : 'fa fa-caret-down'}></i>
+</div>
       {isOpen && (
         <ul className="dropdown-menu">
           {options.map((option) => (

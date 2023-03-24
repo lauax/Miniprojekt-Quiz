@@ -18,10 +18,6 @@ export type AnswerObject = {
   
 };
 
-//HUR VISAR VI ALLA FRÅGOR PÅ SLUTET: DEN SISTA SIDAN
-
- 
-
 const Home = () => {
   const [selectedNumberValue, setSelectedNumberValue] = useState(Number);
   //All out types for the states
@@ -31,15 +27,16 @@ const Home = () => {
   const [userAnswer, setUserAnswer] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
+  const [gameStarted, setGameStarted] = useState(false);
 
   const startTrivia = async () => {
     setloading(true);
     setGameOver(false);
+    setGameStarted(true);
 
     const newQuestions = await fetchQuizQuestions(
       selectedNumberValue,
       Difficulty.EASY
-      
     );
 
     console.log(newQuestions);
@@ -86,24 +83,26 @@ const Home = () => {
   return (
     <>
       <OurStyle />
-      <Dropdown  value={selectedNumberValue} onchange={setSelectedNumberValue}> </Dropdown>
-      <div>
-      {gameOver || userAnswer.length === selectedNumberValue ? (
-  <div>
-    <button className={`start ${userAnswer.length !== selectedNumberValue ? "" : "hide"}`} onClick={startTrivia} >
-      Start
-    </button>
+      
+      {!gameStarted ? (
+        <Dropdown value={selectedNumberValue} onchange={setSelectedNumberValue}></Dropdown>
+      ) : null}
 
-    
-    <button 
-  className={`reset ${gameOver || selectedNumberValue === null ? 'hide' : ''}`} 
-  onClick={startTrivia}
->
-  Restart
-</button>
-    
-  </div>
-) : null}
+      <div>
+        {gameOver || userAnswer.length === selectedNumberValue ? (
+          <div>
+            <button className={`start ${userAnswer.length !== selectedNumberValue ? "" : "hide"}`} onClick={startTrivia} >
+              Start
+            </button>
+
+            <button 
+              className={`reset ${gameOver || selectedNumberValue === null ? 'hide' : ''}`} 
+              onClick={startTrivia}
+            >
+              Restart
+            </button>
+          </div>
+        ) : null}
 
         {!gameOver ? <p className="score"> Score: {score}</p> : null}
 
