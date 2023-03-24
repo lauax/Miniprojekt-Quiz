@@ -10,7 +10,7 @@ import { default as About } from "./about";
 import App from "./App";
 import Home from "./Home";
 import Quiz from "./Quiz";
-import Socials from "./Socials";
+import Socials from "./socials";
 
 const routerJSX = createBrowserRouter(
   createRoutesFromElements(

@@ -7,7 +7,7 @@ import QuestionCard from "./components/QuestionCard";
 //Types
 import { Difficulty } from "./API";
 //Style
-import Ammount from "./ammount";
+import Dropdown from "./ammount";
 import { OurStyle } from "./Home.style";
 
 export type AnswerObject = {
@@ -15,13 +15,15 @@ export type AnswerObject = {
   answer: string;
   correct: boolean;
   correctAnswer: string;
+  
 };
 
 //HUR VISAR VI ALLA FRÅGOR PÅ SLUTET: DEN SISTA SIDAN
 
-const TOTAL_QUESTIONS = 10;
+ 
 
 const Home = () => {
+  const [selectedNumberValue, setSelectedNumberValue] = useState(Number);
   //All out types for the states
   const [loading, setloading] = useState(true);
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -35,7 +37,7 @@ const Home = () => {
     setGameOver(false);
 
     const newQuestions = await fetchQuizQuestions(
-      TOTAL_QUESTIONS,
+      selectedNumberValue,
       Difficulty.EASY
       
     );
@@ -52,7 +54,7 @@ const Home = () => {
   };
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!gameOver) {
+    if (!gameOver && questions[number]) {
       //Svar från användaren
       const answer = e.currentTarget.value;
       //cchecka om svaret är umber
@@ -74,7 +76,7 @@ const Home = () => {
     //Svara på frågan såvida det inte är den sista
     const nextQuestion = number + 1;
 
-    if (nextQuestion === TOTAL_QUESTIONS) {
+    if (nextQuestion === selectedNumberValue) {
       setGameOver(true);
     } else {
       setNumber(nextQuestion);
@@ -84,15 +86,15 @@ const Home = () => {
   return (
     <>
       <OurStyle />
-      <Ammount></Ammount>
+      <Dropdown value={selectedNumberValue} onchange={setSelectedNumberValue}></Dropdown>
       <div>
-      {gameOver || userAnswer.length === TOTAL_QUESTIONS ? (
+      {gameOver || userAnswer.length === selectedNumberValue ? (
   <div>
-    <button className={`start ${userAnswer.length !== TOTAL_QUESTIONS ? "" : "hide"}`} onClick={startTrivia} >
-    Start
+    <button className={`start ${userAnswer.length !== selectedNumberValue ? "" : "hide"}`} onClick={startTrivia} >
+      Start
     </button>
 
-    {userAnswer.length === TOTAL_QUESTIONS && (
+    {userAnswer.length === selectedNumberValue && (
       <button className="reset" onClick={startTrivia}>
         Restart
       </button>
@@ -107,7 +109,7 @@ const Home = () => {
         {!loading && !gameOver && (
           <QuestionCard
             questionNr={number + 1}
-            totalQuestions={TOTAL_QUESTIONS}
+            totalQuestions={selectedNumberValue}
             question={questions[number].question}
             answers={questions[number].answers}
             userAnswer={userAnswer ? userAnswer[number] : undefined}
@@ -117,7 +119,7 @@ const Home = () => {
         {!gameOver &&
         !loading &&
         userAnswer.length === number + 1 &&
-        number !== TOTAL_QUESTIONS - 1 ? (
+        number !== selectedNumberValue - 1 ? (
           <button className="next" onClick={nextQuestion}>
             Show next question
           </button>
