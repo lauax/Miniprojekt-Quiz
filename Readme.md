@@ -10,6 +10,6 @@ Skapa quiz-frågorna:Vi valde att använda oss av ett api från https://opentdb.
 
 Implementera funktionaliteten:Vi skapade en state för quiz-frågorna och svaren och sparade användarens poäng och uppdaterade användargränssnittet baserat på användarens svar. För detta har vi använt React-hooks som useState.
 
-### InstallationFörst behöver ni köra kommandot `npm init vite` för att installera nödvändiga moduler (vite, react, typescript, etc). för samtliga npm metoder skriv `npm help config` för att få tips.
+# Starta projektet- Kör kommandot `npm install`, `npm run dev`, `npm react-rooter-dom`, `npm install styled-components`,   för att starta projektet och installation av nödvändiga npm paket'
 
-# Starta projektet- npm run devKör kommandot `npm install`, `npm react-rooter-dom`, `npm install styled-components` för att starta projektet och installation av nödvändiga npm paket
+### För samtliga npm metoder skriv `npm help config` för att få tips.

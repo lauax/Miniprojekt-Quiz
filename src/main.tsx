@@ -10,6 +10,7 @@ import { default as About } from "./about";
 import App from "./App";
 import Home from "./Home";
 import Quiz from "./Quiz";
+import Socials from "./Socials";
 
 const routerJSX = createBrowserRouter(
   createRoutesFromElements(
@@ -17,7 +18,9 @@ const routerJSX = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="quiz" element={<About/>} />
       <Route path="about" element={<Quiz />} />
+      <Route path="socials" element={<Socials/>} />
     </Route>
+    
   )
 );
 
