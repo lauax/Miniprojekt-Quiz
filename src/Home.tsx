@@ -86,7 +86,7 @@ const Home = () => {
   return (
     <>
       <OurStyle />
-      <Dropdown value={selectedNumberValue} onchange={setSelectedNumberValue}></Dropdown>
+      <Dropdown  value={selectedNumberValue} onchange={setSelectedNumberValue}> </Dropdown>
       <div>
       {gameOver || userAnswer.length === selectedNumberValue ? (
   <div>
@@ -94,11 +94,14 @@ const Home = () => {
       Start
     </button>
 
-    {userAnswer.length === selectedNumberValue && (
-      <button className="reset" onClick={startTrivia}>
-        Restart
-      </button>
-    )}
+    
+    <button 
+  className={`reset ${gameOver || selectedNumberValue === null ? 'hide' : ''}`} 
+  onClick={startTrivia}
+>
+  Restart
+</button>
+    
   </div>
 ) : null}
 
