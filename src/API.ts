@@ -1,36 +1,35 @@
 import { shuffleArray } from "./Random";
 
-
-
 export type Question = {
-    answers:string[]
-    category:string;
-    correct_answer:string;
-    difficulty:string;
-    incorrect_answers:string[];
-    question:string;
-    type:string;
-    
-}
+  answers: string[];
+  category: string;
+  correct_answer: string;
+  difficulty: string;
+  incorrect_answers: string[];
+  question: string;
+  type: string;
+};
 
 export enum Difficulty {
-    EASY = "easy",
-    MEDIUM = "medium",
-    HARD = "hard",
+  EASY = "easy",
+  MEDIUM = "medium",
+  HARD = "hard",
 }
 
+export const fetchQuizQuestions = async (
+  selectedNumberValue: number,
+  difficulty: Difficulty
+) => {
+  const endpoint = `https://opentdb.com/api.php?amount=${selectedNumberValue}&difficulty=${difficulty}&type=multiple`;
 
-export const fetchQuizQuestions = async ( selectedNumberValue:number, difficulty:Difficulty) => {
-    const endpoint = `https://opentdb.com/api.php?amount=${selectedNumberValue}&difficulty=${difficulty}&type=multiple`;
+  const data = await (await fetch(endpoint)).json();
+  const questions = data.results as Question[];
 
-
-    const data = await (await fetch(endpoint)).json();
-    const questions = data.results as Question[];
-
-    return questions.map((question: Question) => ({
-        ...question,
-        answers: shuffleArray([...question.incorrect_answers, question.correct_answer]),
-    }))
-};  
-
-    
+  return questions.map((question: Question) => ({
+    ...question,
+    answers: shuffleArray([
+      ...question.incorrect_answers,
+      question.correct_answer,
+    ]),
+  }));
+};

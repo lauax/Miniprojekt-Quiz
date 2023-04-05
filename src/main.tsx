@@ -4,23 +4,22 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  RouterProvider
+  RouterProvider,
 } from "react-router-dom";
-import { default as About } from "./about";
-import App from "./App";
-import Home from "./Home";
-import Quiz from "./Quiz";
-import Socials from "./Socials";
+import { default as About } from "./components/about";
+import App from "./components/App";
+import Home from "./components/Home";
+import Quiz from "./components/Quiz";
+import Socials from "./components/Socials";
 
 const routerJSX = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
-      <Route path="quiz" element={<About/>} />
+      <Route path="quiz" element={<About />} />
       <Route path="about" element={<Quiz />} />
-      <Route path="socials" element={<Socials/>} />
+      <Route path="socials" element={<Socials />} />
     </Route>
-    
   )
 );
 

@@ -1,13 +1,15 @@
 import { Link, Outlet } from "react-router-dom";
 import styled from "styled-components";
-import startTrivia from './Home';
+import startTrivia from "./Home";
 
 function App() {
   return (
     <div>
       <Aside>
         <Link to="/">Startpage</Link>
-        <Link to="/"onClick={startTrivia}>Start over</Link>
+        <Link to="/" onClick={startTrivia}>
+          Start over
+        </Link>
         <Link to="about">About...</Link>
         <Link to="socials">Sociala medier</Link>
       </Aside>

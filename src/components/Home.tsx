@@ -1,21 +1,20 @@
 import "./Home.css";
 
 import React, { useState } from "react";
-import { fetchQuizQuestions, Question } from "./API";
+import { fetchQuizQuestions, Question } from "../API";
 //Components
-import QuestionCard from "./components/QuestionCard";
+import QuestionCard from "./QuestionCard";
 //Types
-import { Difficulty } from "./API";
+import { Difficulty } from "../API";
 //Style
+import { OurStyle } from "../Home.style";
 import Dropdown from "./ammount";
-import { OurStyle } from "./Home.style";
 
 export type AnswerObject = {
   question: string;
   answer: string;
   correct: boolean;
   correctAnswer: string;
-  
 };
 
 const Home = () => {
@@ -83,20 +82,30 @@ const Home = () => {
   return (
     <>
       <OurStyle />
-      
+
       {!gameStarted ? (
-        <Dropdown value={selectedNumberValue} onchange={setSelectedNumberValue}></Dropdown>
+        <Dropdown
+          value={selectedNumberValue}
+          onchange={setSelectedNumberValue}
+        ></Dropdown>
       ) : null}
 
       <div>
         {gameOver || userAnswer.length === selectedNumberValue ? (
           <div>
-            <button className={`start ${userAnswer.length !== selectedNumberValue ? "" : "hide"}`} onClick={startTrivia} >
+            <button
+              className={`start ${
+                userAnswer.length !== selectedNumberValue ? "" : "hide"
+              }`}
+              onClick={startTrivia}
+            >
               Start
             </button>
 
-            <button 
-              className={`reset ${gameOver || selectedNumberValue === null ? 'hide' : ''}`} 
+            <button
+              className={`reset ${
+                gameOver || selectedNumberValue === null ? "hide" : ""
+              }`}
               onClick={startTrivia}
             >
               Restart
@@ -132,4 +141,3 @@ const Home = () => {
 };
 
 export default Home;
-
