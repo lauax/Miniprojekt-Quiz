@@ -17,10 +17,9 @@ const Home: React.FC = () => {
   };
 
   const fetchQuizData = async () => {
-    const newQuestions = await fetchQuizQuestions(10, Difficulty.HARD);
+    const newQuestions = await fetchQuizQuestions(10, Difficulty.MEDIUM);
     setQuestionsLoaded(true);
-    // Update the questions state with the fetched questions
-    // ...
+    // Uppdatera statet
   };
 
   return (
