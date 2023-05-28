@@ -25,6 +25,8 @@ export const fetchQuizQuestions = async (
   const data = await (await fetch(endpoint)).json();
   const questions = data.results as Question[];
 
+  console.log("Fetched Questions:", questions);
+
   return questions.map((question: Question) => ({
     ...question,
     answers: shuffleArray([
