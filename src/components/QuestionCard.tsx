@@ -1,6 +1,13 @@
 import React from "react";
-import { AnswerObject } from "../Home";
 import { ButtonWrapper, Wrapper } from "./QuestionCards.styles";
+
+export type AnswerObject = {
+  question: string;
+  answer: string;
+  correct: boolean;
+  correctAnswer: string;
+};
+
 type Props = {
   question: string;
   answers: string[];
@@ -9,7 +16,7 @@ type Props = {
   questionNr: number;
   totalQuestions: number;
 };
-//FC är inbyggt för FunctionalComponent
+
 const QuestionCard: React.FC<Props> = ({
   question,
   answers,

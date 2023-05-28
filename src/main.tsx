@@ -1,31 +1,30 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
+import ReactDOM from "react-dom";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  RouterProvider
+  RouterProvider,
 } from "react-router-dom";
-import { default as About } from "./about";
-import App from "./App";
-import Home from "./Home";
-import Quiz from "./Quiz";
-import Socials from "./Socials";
+import { default as About } from "./components/about";
+import App from "./components/App";
+import Home from "./components/Home";
+import Socials from "./components/Socials";
 
 const routerJSX = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route index element={<Home />} />
-      <Route path="quiz" element={<About/>} />
-      <Route path="about" element={<Quiz />} />
-      <Route path="socials" element={<Socials/>} />
+    <Route element={<App />}>
+      <Route path="/" element={<Home />} />
+
+      <Route path="about" element={<About />} />
+      <Route path="socials" element={<Socials />} />
     </Route>
-    
   )
 );
 
-createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.render(
   <React.StrictMode>
     <RouterProvider router={routerJSX} />
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
