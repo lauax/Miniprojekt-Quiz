@@ -8,7 +8,7 @@ Quizzy är en app där du får svara på 10 frågor i olika kategorier. När man
 
 ## Tekniker och verktyg
 
-Vi har använt oss av följande tekniker: React(https://react.dev/), Styled components (https://styled-components.com/). Vi satte upp projektet med Vite.
+Vi har använt oss av följande tekniker: React och React-Router(https://react.dev/), Styled components (https://styled-components.com/). Vi satte upp projektet med Vite.
 Vi valde att använda oss av ett api från https://opentdb.com/api_config.php. för att hämta quizfrågorna
 
 # Starta projektet
