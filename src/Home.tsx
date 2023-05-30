@@ -4,8 +4,8 @@ import "./Home.css";
 import { OurStyle } from "./Home.style";
 import Dropdown from "./ammount";
 import QuestionCard from "./components/QuestionCard";
+import HappySadEmoji from "./happyAndSadEmoji.tsx";
 import LoadingSpinner from "./loadingSpinner";
-
 export type AnswerObject = {
   question: string;
   answer: string;
@@ -110,13 +110,19 @@ const Home = () => {
             )}
 
             <button
+            
               className={`reset ${
                 gameOver || selectedNumberValue === null ? "hide" : ""
               }`}
               onClick={startTrivia}
             >
               Restart
+              
             </button>
+            {!gameOver && selectedNumberValue !== null && (
+            <HappySadEmoji score={score} />
+          )}
+
           </div>
         ) : null}
 
