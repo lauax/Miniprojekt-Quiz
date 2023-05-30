@@ -1,15 +1,17 @@
-# Quiz-app med react# 
+# Quiz-app med react#
 
 Länk till vårat Quiz: quizzi-game.netlify.app
 
-## This is a simple Quiz-game using React and react-routeSätta upp projektet:Första steget var att skapa ett nytt React-projekt med verktyg som create-react-app och skapa en repository på GitHub. 
+## This is a simple Quiz-game using React and react-router.
 
-Designa användargränssnittet:Nästa steg var att fundera på hur vi ville att användargränssnittet för vår quiz-app skulle se ut. Detta inkluderar att skapa huvudlayouten, designa quizfrågorna och svarsmöjligheterna, samt att fundera över hur score ska visas. Vi har valt att använda styled-components och CSS för att skapa en visuellt tilltalande design.
+Quizzy är en app där du får svara på 10 frågor i olika kategorier. När man har svarat går det inte att ångra sig. Utan det blir att man får klicka på nästa fråga. När 10 frågor har besvarats så är spelomgången slut och du får se en sammanställning på antalet rätta svar. Vill du påbörja en omgång quis så trycker du på start. Utmana dig själv eller andra för frågorna är kluriga. Enjoy the game
 
-Skapa quiz-frågorna:Vi valde att använda oss av ett api från https://opentdb.com/api_config.php.
+## Tekniker och verktyg
 
-Implementera funktionaliteten:Vi skapade en state för quiz-frågorna och svaren och sparade användarens poäng och uppdaterade användargränssnittet baserat på användarens svar. För detta har vi använt React-hooks som useState.
+Vi har använt oss av följande tekniker: React och React-Router(https://react.dev/), Styled components (https://styled-components.com/). Vi satte upp projektet med Vite.
+Vi valde att använda oss av ett api från https://opentdb.com/api_config.php. för att hämta quizfrågorna
 
-# Starta projektet- Kör kommandot `npm install`, `npm run dev`, `npm react-rooter-dom`, `npm install styled-components`,   för att starta projektet och installation av nödvändiga npm paket'
+# Starta projektet
 
-### För samtliga npm metoder skriv `npm help config` för att få tips.
+- `npm install` - Installerar alla NodeJS moduler (körs en gång).
+- `npm run dev` - Startar utvecklingsmiljön.
