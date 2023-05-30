@@ -13,7 +13,7 @@ export type AnswerObject = {
   correctAnswer: string;
 };
 
-const Home = () => {
+const Quiz = () => {
   const [selectedNumberValue, setSelectedNumberValue] = useState<number>(0);
   const [loading, setLoading] = useState(true);
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -155,4 +155,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Quiz;
