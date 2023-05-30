@@ -6,18 +6,16 @@ import {
   Route,
   RouterProvider
 } from "react-router-dom";
-import { default as About } from "./about";
+import About from "./About";
 import App from "./App";
 import Home from "./Home";
-import Quiz from "./Quiz";
 import Socials from "./Socials";
 
 const routerJSX = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
-      <Route path="quiz" element={<About/>} />
-      <Route path="about" element={<Quiz />} />
+      <Route path="about" element={<About />} />
       <Route path="socials" element={<Socials/>} />
     </Route>
     
