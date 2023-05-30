@@ -24,7 +24,7 @@ const Home = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [showSpinner, setShowSpinner] = useState(true);
   const [hideSpinner, setHideSpinner] = useState(false);
-
+  
   const startTrivia = async () => {
     setLoading(true);
     setGameOver(false);
@@ -88,9 +88,12 @@ const Home = () => {
     <>
       <OurStyle />
 
-      {!gameStarted && (
-        <Dropdown value={selectedNumberValue} onchange={setSelectedNumberValue} />
-      )}
+      {!gameStarted ? (
+        <Dropdown
+          value={selectedNumberValue}
+          onchange={setSelectedNumberValue}
+        ></Dropdown>
+      ) : null}
 
       <div>
         {gameOver || userAnswer.length === selectedNumberValue ? (
@@ -106,15 +109,22 @@ const Home = () => {
               </button>
             )}
 
-            
+            <button
+              className={`reset ${
+                gameOver || selectedNumberValue === null ? "hide" : ""
+              }`}
+              onClick={startTrivia}
+            >
+              Restart
+            </button>
           </div>
         ) : null}
 
-        {!gameOver && <p className="score">Score: {score}</p>}
+        {!gameOver ? <p className="score"> Score: {score}</p> : null}
 
         {loading || (!questions.length && <p>Loading Questions....</p>)}
 
-        {selectedNumberValue !== 0 && showSpinner ? <LoadingSpinner /> : null}
+        {(selectedNumberValue !== 0 && showSpinner) ? <LoadingSpinner /> : null}
 
         {!loading && !gameOver && (
           <QuestionCard
@@ -126,15 +136,14 @@ const Home = () => {
             callback={checkAnswer}
           />
         )}
-
         {!gameOver &&
-          !loading &&
-          userAnswer.length === number + 1 &&
-          number !== selectedNumberValue - 1 ? (
-            <button className="next" onClick={nextQuestion}>
-              Show next question
-            </button>
-          ) : null}
+        !loading &&
+        userAnswer.length === number + 1 &&
+        number !== selectedNumberValue - 1 ? (
+          <button className="next" onClick={nextQuestion}>
+            Show next question
+          </button>
+        ) : null}
       </div>
     </>
   );
