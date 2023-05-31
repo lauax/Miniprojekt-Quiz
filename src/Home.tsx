@@ -1,36 +1,32 @@
+import React, { useEffect, useState } from "react";
+import { Difficulty, Question, fetchQuizQuestions } from "./API";
 import "./Home.css";
-
-import React, { useState } from "react";
-import { fetchQuizQuestions, Question } from "./API";
-//Components
-import QuestionCard from "./components/QuestionCard";
-//Types
-import { Difficulty } from "./API";
-//Style
-import Dropdown from "./ammount";
 import { OurStyle } from "./Home.style";
-
+import Dropdown from "./ammount";
+import QuestionCard from "./components/QuestionCard";
+import HappySadEmoji from "./happyAndSadEmoji.tsx";
+import LoadingSpinner from "./loadingSpinner";
 export type AnswerObject = {
   question: string;
   answer: string;
   correct: boolean;
   correctAnswer: string;
-  
 };
 
-const Home = () => {
-  const [selectedNumberValue, setSelectedNumberValue] = useState(Number);
-  //All out types for the states
-  const [loading, setloading] = useState(true);
+const Quiz = () => {
+  const [selectedNumberValue, setSelectedNumberValue] = useState<number>(0);
+  const [loading, setLoading] = useState(true);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswer, setUserAnswer] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
   const [gameStarted, setGameStarted] = useState(false);
-
+  const [showSpinner, setShowSpinner] = useState(true);
+  const [hideSpinner, setHideSpinner] = useState(false);
+  
   const startTrivia = async () => {
-    setloading(true);
+    setLoading(true);
     setGameOver(false);
     setGameStarted(true);
 
@@ -39,38 +35,46 @@ const Home = () => {
       Difficulty.EASY
     );
 
-    console.log(newQuestions);
-
-    //Use some sort of error handling if we get an error
-
     setQuestions(newQuestions);
     setScore(0);
     setUserAnswer([]);
     setNumber(0);
-    setloading(false);
+    setLoading(false);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSpinner(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!showSpinner) {
+      setHideSpinner(true);
+    }
+  }, [showSpinner]);
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!gameOver && questions[number]) {
-      //Svar från användaren
       const answer = e.currentTarget.value;
-      //cchecka om svaret är umber
       const correct = questions[number].correct_answer === answer;
-      //Lägg till poän om svaret är rätt
+
       if (correct) setScore((prev) => prev + 1);
-      //Spara svar i array för svar av användaren
-      const AnswerObject = {
+
+      const answerObject = {
         question: questions[number].question,
         answer,
         correct,
         correctAnswer: questions[number].correct_answer,
       };
-      setUserAnswer((prev) => [...prev, AnswerObject]);
+
+      setUserAnswer((prev) => [...prev, answerObject]);
     }
   };
 
   const nextQuestion = () => {
-    //Svara på frågan såvida det inte är den sista
     const nextQuestion = number + 1;
 
     if (nextQuestion === selectedNumberValue) {
@@ -83,30 +87,50 @@ const Home = () => {
   return (
     <>
       <OurStyle />
-      
+
       {!gameStarted ? (
-        <Dropdown value={selectedNumberValue} onchange={setSelectedNumberValue}></Dropdown>
+        <Dropdown
+          value={selectedNumberValue}
+          onchange={setSelectedNumberValue}
+        ></Dropdown>
       ) : null}
 
       <div>
         {gameOver || userAnswer.length === selectedNumberValue ? (
           <div>
-            <button className={`start ${userAnswer.length !== selectedNumberValue ? "" : "hide"}`} onClick={startTrivia} >
-              Start
-            </button>
+            {hideSpinner && (
+              <button
+                className={`start ${
+                  userAnswer.length !== selectedNumberValue ? "" : "hide"
+                }`}
+                onClick={startTrivia}
+              >
+                Start
+              </button>
+            )}
 
-            <button 
-              className={`reset ${gameOver || selectedNumberValue === null ? 'hide' : ''}`} 
+            <button
+            
+              className={`reset ${
+                gameOver || selectedNumberValue === null ? "hide" : ""
+              }`}
               onClick={startTrivia}
             >
               Restart
+              
             </button>
+            {!gameOver && selectedNumberValue !== null && (
+            <HappySadEmoji score={score} />
+          )}
+
           </div>
         ) : null}
 
         {!gameOver ? <p className="score"> Score: {score}</p> : null}
 
         {loading || (!questions.length && <p>Loading Questions....</p>)}
+
+        {(selectedNumberValue !== 0 && showSpinner) ? <LoadingSpinner /> : null}
 
         {!loading && !gameOver && (
           <QuestionCard
@@ -131,5 +155,4 @@ const Home = () => {
   );
 };
 
-export default Home;
-
+export default Quiz;
