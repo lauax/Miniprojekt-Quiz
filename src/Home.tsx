@@ -120,7 +120,8 @@ const Quiz = () => {
               
             </button>
             {!gameOver && selectedNumberValue !== null && (
-            <HappySadEmoji score={score} />
+            <HappySadEmoji score={score} totalQuestions={selectedNumberValue} />
+
           )}
 
           </div>
